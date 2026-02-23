@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${appTitle}">MenuDev Platform</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div th:replace="~{fragments/header :: siteHeader}"></div>
+
+<main class="container">
+    <!-- Hero section: comunica subito il valore dell'applicazione -->
+    <section class="hero">
+        <h2 th:text="${appTitle}">MenuDev Platform</h2>
+        <p th:text="${appDescription}">Descrizione applicazione</p>
+    </section>
+
+    <!-- Features: elenco dinamico basato su modello passato dal controller -->
+    <section id="features" class="features">
+        <h3>Features</h3>
+        <div class="feature-grid">
+            <article class="feature-card" th:each="feature : ${features}">
+                <h4 th:text="${feature.title}">Titolo feature</h4>
+                <p th:text="${feature.description}">Descrizione feature</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- CTA: invito all'azione esplicito per migliorare engagement dell'utente -->
+    <section id="cta" class="cta">
+        <a class="cta-button" href="/about" th:text="${ctaLabel}">Scopri di più</a>
+    </section>
+</main>
+
+<div th:replace="~{fragments/footer :: siteFooter}"></div>
+</body>
+</html>

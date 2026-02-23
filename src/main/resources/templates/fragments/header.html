@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<body>
+<!--
+  Fragment di header riusabile.
+  Vantaggio: centralizziamo markup condiviso, evitando duplicazioni tra pagine.
+-->
+<header th:fragment="siteHeader" class="site-header">
+    <div class="container">
+        <h1 class="logo">MenuDev</h1>
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#cta">Call to Action</a>
+        </nav>
+    </div>
+</header>
+</body>
+</html>
