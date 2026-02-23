@@ -1,6 +1,6 @@
 # MenuDev - Spring Boot MVC + Thymeleaf Landing Page
 
-Applicazione demo Java 17 con architettura MVC classica e landing page pubblica renderizzata con Thymeleaf.
+Applicazione demo Java 17 con architettura MVC classica, landing page renderizzata con Thymeleaf e sicurezza base con Spring Security (form-login).
 
 ## Struttura del progetto
 
@@ -37,6 +37,11 @@ mvn spring-boot:run
 ```
 
 Poi apri: `http://localhost:8080/`
+
+### Credenziali demo
+
+- Username: `menudev`
+- Password: `menudev123`
 
 ## Test
 

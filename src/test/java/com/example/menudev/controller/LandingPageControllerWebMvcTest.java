@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
@@ -36,6 +37,7 @@ class LandingPageControllerWebMvcTest {
     private LandingPageService landingPageService;
 
     @Test
+    @WithMockUser
     void shouldReturnLandingViewForRootEndpoint() throws Exception {
         // Arrange: definiamo i dati restituiti dal service mockato.
         given(landingPageService.getApplicationTitle()).willReturn("MenuDev Platform");
@@ -53,5 +55,11 @@ class LandingPageControllerWebMvcTest {
                 .andExpect(model().attributeExists("appDescription"))
                 .andExpect(model().attributeExists("features"))
                 .andExpect(model().attributeExists("ctaLabel"));
+    }
+
+    @Test
+    void shouldRedirectAnonymousUserToLogin() throws Exception {
+        mockMvc.perform(get("/"))
+                .andExpect(status().is3xxRedirection());
     }
 }
